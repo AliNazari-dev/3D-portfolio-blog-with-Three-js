@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import Development from "./Development";
+import ProductDesign from "./ProductDesign";
+import WebDesign from "./WebDesign";
 
-const data = ["Web Design", "Development", "Illustration", "Product Design", "Social Media"];
+const data = [
+  "Web Design",
+  "Development",
+  "Illustration",
+  "Product Design",
+  "Social Media",
+];
 
 const Section = styled.div`
   height: 100vh;
@@ -51,6 +60,12 @@ const ListItem = styled.li`
   -webkit-text-stroke: 1px white;
   position: relative;
 
+  @media only screen and (max-width: 768px) {
+    font-size: 24px;
+    color: white;
+    -webkit-text-stroke: 0px;
+  }
+
   ::after {
     content: "${(props) => props.text}";
     position: absolute;
@@ -61,6 +76,7 @@ const ListItem = styled.li`
     overflow: hidden;
     white-space: nowrap;
   }
+
   &:hover {
     ::after {
       animation: moveText 0.5s linear both;
@@ -68,7 +84,6 @@ const ListItem = styled.li`
       @keyframes moveText {
         to {
           width: 100%;
-          
         }
       }
     }
@@ -78,8 +93,8 @@ const ListItem = styled.li`
 const Right = styled.div`
   flex: 1;
 `;
-
 const Works = () => {
+  const [work, setWork] = useState("Web Design");
   return (
     <Section>
       <Container>
@@ -92,7 +107,7 @@ const Works = () => {
             ))}
           </List>
         </Left>
-        <Right></Right>
+        <Right>{work === "Web Design" ? <WebDesign /> : work === "Development" ? <Development /> : <ProductDesign />}</Right>
       </Container>
     </Section>
   );
