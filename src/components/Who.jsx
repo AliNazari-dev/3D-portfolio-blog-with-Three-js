@@ -83,20 +83,25 @@ const Who = () => {
     <Section>
       <Container>
         <Left>
-          <Canvas camera={{ position: [5, 3, 5], fov: 25 }}>
-            <OrbitControls enableZoom={false} autoRotate />
-            <ambientLight intensity={1} />
-            <directionalLight position={[1, 2, 3]} />
-            <Cube />
+          <Canvas camera={{ position: [5, 5, 5], fov: 25 }}>
+            <Suspense fallback={null}>
+              <ambientLight intensity={0.5} />
+              <directionalLight position={[3, 2, 1]} />
+              <Cube />
+              <OrbitControls enableZoom={false} autoRotate />
+            </Suspense>
           </Canvas>
         </Left>
         <Right>
           <Title>Think outside the square space</Title>
           <WhatWeDo>
-            <Line src='./img/line.png' />
+            <Line src="./img/line.png" />
             <Subtitle>Who we Are</Subtitle>
           </WhatWeDo>
-          <Desc>a creative group of designers and developers with a passion for the arts.</Desc>
+          <Desc>
+            a creative group of designers and developers with a passion for the
+            arts.
+          </Desc>
           <Button>See our works</Button>
         </Right>
       </Container>

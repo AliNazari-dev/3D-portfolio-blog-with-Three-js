@@ -93,6 +93,7 @@ const ListItem = styled.li`
 const Right = styled.div`
   flex: 1;
 `;
+
 const Works = () => {
   const [work, setWork] = useState("Web Design");
   return (
@@ -107,7 +108,15 @@ const Works = () => {
             ))}
           </List>
         </Left>
-        <Right>{work === "Web Design" ? <WebDesign /> : work === "Development" ? <Development /> : <ProductDesign />}</Right>
+        <Right>
+          {work === "Web Design" ? (
+            <WebDesign />
+          ) : work === "Development" ? (
+            <Development />
+          ) : (
+            <ProductDesign />
+          )}
+        </Right>
       </Container>
     </Section>
   );
